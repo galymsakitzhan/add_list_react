@@ -17,15 +17,15 @@ export default function List() {
 
     const vipClient = ['Galym', 'Baxa', 'Dias'];
 
-    const handleRemove = () => {
-        const tmp = JSON.parse(sessionStorage.getItem("list"));
 
-        const updatedList = tmp.filter(item => item.name !== rsname);
 
-        sessionStorage.setItem("list", JSON.stringify(updatedList));
-        setData(updatedList);
-        setRsname("");
-    };
+   const handleRemove = () =>{
+    let lister = JSON.parse(sessionStorage.getItem("list"));
+        let updateList = lister.filter(item => item.name !== rsname);
+        sessionStorage.setItem("list",JSON.stringify(updateList));
+        setData(updateList);
+        setRsname("")
+   }
 
     return (
         <body>
@@ -51,11 +51,13 @@ export default function List() {
                         </button>
                     </div>
                 </div>
+
+
                 {data.map(({ name, surname, phone }, index) => (
-                    <div key={index} className="list-base">
+                    <div  className="list-base">
                         <table>
                             <tr>
-                                <td className="td1" style={{ backgroundColor: vipClient.includes(name) ? "red" : "black",
+                                <td className="td1" style={{backgroundColor: vipClient.includes(name) ? "red" : "black",
                                 }}>{index + 1}</td>
                                 <td className="td1" style={{backgroundColor: vipClient.includes(name) ? "red" : "black",
                                 }}>{name}</td>
@@ -67,9 +69,30 @@ export default function List() {
                         </table>
                     </div>
                 ))}
+
+
             </div>
         </body>
     );
 }
+
+
+
+
+// const deleteInput = () =>{
+//     return(
+//         <div className="delete">
+//                         <input
+//                             type="text"
+//                             placeholder="Your Name"
+//                             value={rsname}
+//                             onChange={(e) => setRsname(e.target.value)}
+//                         />
+//                         <button className="delete__btn" onClick={handleRemove}>
+//                             Delete
+//                         </button>
+//                     </div>
+//     )
+//    }
 
 
