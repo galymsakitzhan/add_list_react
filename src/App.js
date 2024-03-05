@@ -1,36 +1,25 @@
-import './App.css';
-import { createBrowserRouter, RouterProvider, BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from './page/Home';
-import Add from './page/Add';
-import List from './page/List';
+import React from "react";
+import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./page/Home/Home";
+import Add from "./page/Add/Add";
+import List from "./page/List/List";
+import State from "./page/useState/State";
 
 function App() {
-
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Home/>
-    },
-    {
-      path: "/add",
-      element: <Add/>
-    },
-    {
-      path: "/list",
-      element: <List/>
-    }
-  ])
-
   return (
     <div className="App">
-      <RouterProvider router={router}/>
-       <BrowserRouter>
+      <Router>
         <Routes>
-          <Route path="/" element={<div>Root page</div>}/>
+          <Route path="/" element={<Home />} />
+          <Route path="/add" element={<Add />} />
+          <Route path="/list" element={<List />} />
+          <Route path="/state" element={<State/>} />
         </Routes>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 }
 
 export default App;
+
